@@ -28,8 +28,7 @@ class PdfApprovalsTest {
     }
 
     private void verifyPage(PDDocument pdDocument, int page) throws IOException {
-        Options options = Approvals.NAMES.withParameters("page-" + page)
-                .withReporter(new ImageReporter());
+        Options options = Approvals.NAMES.withParameters("page-" + page);
         BufferedImage renderedImage = new PDFRenderer(pdDocument)
                 .renderImage(page);
         AwtApprovals.verify(renderedImage, options);
